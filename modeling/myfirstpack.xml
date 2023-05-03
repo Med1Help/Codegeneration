@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Package id="1" name="myfirstpack">
+    <Classe extends="Faketest2" id="52" name="Faketest">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+    <Classe extends="false" id="53" name="Faketest2">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+    <Classe extends="Faketest2" id="102" name="Faketest3">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+    <Classe extends="Faketest2" id="103" name="Faketest8">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+    <Classe extends="Faketest8" id="152" name="Faketest3">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+    <Classe extends="false" id="153" name="Faketest8">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+</Package>

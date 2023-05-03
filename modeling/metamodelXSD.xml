@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Package" >
+      <xs:complexType mixed="true">
+          <xs:sequence>
+              <xs:element name="Classe" type="classDef" minOccurs="0" maxOccurs="unbounded"></xs:element>
+          </xs:sequence>
+          <xs:attribute name="id" type="xs:string" ></xs:attribute>
+          <xs:attribute name="name" type="xs:string" ></xs:attribute>
+      </xs:complexType>
+  </xs:element>
+    <xs:complexType name="classDef">
+        <xs:sequence>
+            <xs:element name="Attributes" type="attrDef" minOccurs="0" maxOccurs="1"></xs:element>
+            <xs:element name="Functions" type="funcsDef" minOccurs="0" maxOccurs="1"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="extends" type="xs:string"></xs:attribute>
+        <xs:attribute name="id" type="xs:string" ></xs:attribute>
+        <xs:attribute name="name" type="xs:string" ></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="attrDef">
+        <xs:sequence>
+            <xs:element name="Attribute" type="attribute" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="funcsDef">
+        <xs:sequence>
+            <xs:element name="Function" type="func" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="func">
+        <xs:sequence>
+            <xs:element name="parameter" type="attribute" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"></xs:attribute>
+        <xs:attribute name="return" type="attrRest"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="attribute" mixed="true">
+        <xs:attribute name="type" type="attrRest"></xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="attrRest">
+        <xs:restriction base="xs:string" >
+            <xs:enumeration value="int"/>
+            <xs:enumeration value="float"/>
+            <xs:enumeration value="String"/>
+            <xs:enumeration value="boolean"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
