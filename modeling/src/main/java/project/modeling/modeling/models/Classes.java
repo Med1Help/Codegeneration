@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity(name="Classes")
 public class Classes {
     @GeneratedValue
@@ -42,11 +45,18 @@ public class Classes {
         try {
             myClasse += " { \n";
             Attributes[] attr = this.getClassAttributes();
+            List<Functions> functs = new ArrayList<>();
+            functs.addAll(List.of(this.getClassFunctions()));
             for(Attributes att : attr){
-               myClasse += "private "+att.getT()+" "+att.getN()+";\n";
+                Functions gets = new Functions(att.getT(),"get"+att.getN(),new Attributes[0]);
+                Attributes[] attrs = new Attributes[1];
+                attrs[0] = new Attributes(att.getT(),att.getN());
+                Functions sets = new Functions("void","set"+att.getN(),attrs);
+                functs.add(gets);
+                functs.add(sets);
+                myClasse += "private "+att.getT()+" "+att.getN()+";\n";
             }
             myClasse += "public "+this.name+"(){}\n";
-            Functions[] functs = this.getClassFunctions();
             for(Functions func : functs){
                 myClasse += func.toString() +"\n";
             }

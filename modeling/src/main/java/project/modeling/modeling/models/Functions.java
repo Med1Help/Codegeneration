@@ -25,13 +25,23 @@ public class Functions {
         try {
             //Attributes[] attr = mapper.readValue(this.getAttr(), Attributes[].class);
             int len = attr.length;
+            String getName = "";
+
             for(Attributes att : attr){
                 myFunc += att.getT()+" "+att.getN()+"";
                 len--;
                 if(len > 0) myFunc+=",";
 
             }
-            myFunc += "){}";
+            if(this.nam.contains("get")){
+                String setName = this.nam.substring(3);
+                myFunc += "){ \n return this."+setName+";}";
+            }else if(this.nam.contains("set")){
+                String setName = this.nam.substring(3);
+                myFunc += "){\n this."+setName+" = "+setName+";\n }";
+            }else{
+                myFunc += "){}";
+            }
 
         }catch (Exception e){
             System.out.println(e.toString());
