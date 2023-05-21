@@ -42,11 +42,13 @@ public class PackService {
         this.document = document;
     }
 
-    public void savePack(String name){
-        this.repo.save(new Packages(name));
+    public Packages savePack(String name){
+
+        Packages pack = this.repo.save(new Packages(name));
+        return pack;
     }
-    public String packName(int id){
-        return this.repo.findById(id).get().getName();
+    public int packName(String name){
+        return this.repo.findByName(name).get(0).getId();
     }
     public File createPack(String name){
         File folder = new File(name);

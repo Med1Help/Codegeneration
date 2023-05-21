@@ -1,6 +1,7 @@
 package project.modeling.modeling.controllers;
 
 import org.springframework.web.bind.annotation.*;
+import project.modeling.modeling.models.Packages;
 import project.modeling.modeling.services.PackService;
 
 @RestController
@@ -12,7 +13,8 @@ public class PackageController {
         this.packService = packService;
     }
     @PostMapping
-    public void savePack(@RequestParam("name") String name){
-       this.packService.savePack(name);
+    public Packages savePack(@RequestParam("name") String name){
+        Packages pack =  this.packService.savePack(name);
+        return pack;
     }
 }

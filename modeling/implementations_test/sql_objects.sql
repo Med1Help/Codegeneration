@@ -1,0 +1,20 @@
+CREATE TABLE Faketest8(
+test8_id NUMBER,
+test3_id NUMBER,
+a Number,
+goo VARCHAR2,
+too VARCHAR2,
+FOREIGN KEY (test8_id) REFERENCES test8(id) ON DELETE CASCADE,
+FOREIGN KEY (test3_id) REFERENCES test3(id) ON DELETE SET NULL
+)
+CREATE TABLE test3(
+_id NUMBER,
+a Number,
+goo VARCHAR2,
+too VARCHAR2
+)
+CREATE TABLE test8(
+a Number,
+goo VARCHAR2,
+too VARCHAR2
+)

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Package id="102" name="implementations_test">
+    <Classe extends="false" id="153" name="Faketest8">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+    <Classe extends="test8" id="302" name="test3">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+    <Classe extends="false" id="303" name="test8">
+        <Attributes>
+            <Attribute type="int">a</Attribute>
+            <Attribute type="String">goo</Attribute>
+            <Attribute type="String">too</Attribute>
+        </Attributes>
+        <Functions>
+            <Function name="func1" return="String">
+                <parameter type="int">a</parameter>
+                <parameter type="String">goo</parameter>
+            </Function>
+            <Function name="func2" return="int">
+                <parameter type="float">b</parameter>
+                <parameter type="String">goo</parameter>
+                <parameter type="boolean">ko</parameter>
+            </Function>
+        </Functions>
+    </Classe>
+</Package>

@@ -20,19 +20,23 @@ public class Classes {
     private String package_name;
     private String extend;
     private String implement;
+    private String agregate;
+    private String composed;
 
     public Classes() {
     }
 
-    public Classes(int id, String name, String attributes, String functions, int package_id, String extend, String implement ,String package_name) {
-        this.id = id;
-        this.name = name;
-        this.attributes = attributes;
-        this.functions = functions;
-        this.packageId = package_id;
-        this.extend = extend;
-        this.implement = implement;
-        this.package_name = package_name;
+    public Classes(int id, String name, String attributes, String functions, int package_id, String extend, String implement,String agregate,String composed ,String package_name) {
+        this.id             = id;
+        this.name           = name;
+        this.attributes     = attributes;
+        this.functions      = functions;
+        this.packageId      = package_id;
+        this.extend         = extend;
+        this.implement      = implement;
+        this.agregate       = agregate;
+        this.composed       = composed;
+        this.package_name   = package_name;
     }
     public String toString(){
         String myClasse = "package "+this.package_name+";\n" +
@@ -41,6 +45,16 @@ public class Classes {
             // --TODO check if classe that extended is existe
 
             myClasse += "extends " + this.extend + " ";
+        }
+        if(this.getImplementations().length > 0){
+            String[] implementations = this.getImplementations();
+            myClasse                += "implements ";
+            int leng                 = implementations.length;
+            for(String implement : implementations){
+                leng--;
+                if(leng == 0)myClasse += implement+"";
+                else myClasse += implement+" , ";
+            }
         }
         try {
             myClasse += " { \n";
@@ -56,7 +70,27 @@ public class Classes {
                 functs.add(sets);
                 myClasse += "private "+att.getT()+" "+att.getN()+";\n";
             }
-            myClasse += "public "+this.name+"(){}\n";
+            String[] agregations  = this.getAgregations();
+            String[] compositions = this.getCompositions();
+            String argConstructor = "";
+            String bodConstructor = "";
+            int leng = this.getAgregations().length;
+            if(this.getAgregations().length > 0){
+                leng--;
+                for(String agregate : agregations){
+                    myClasse                        += "private "+agregate+" "+agregate.toLowerCase()+"attr;\n";
+                    if(leng == 0)argConstructor     += agregate+" "+agregate.toLowerCase()+"attr";
+                    else argConstructor             += agregate+" "+agregate.toLowerCase()+"attr, ";
+                    bodConstructor                  += "this."+agregate.toLowerCase()+"attr = "+agregate.toLowerCase()+"attr;\n";
+                }
+            }
+            if(this.getCompositions().length > 0){
+                for(String compose : compositions){
+                    myClasse        += "private "+compose+" "+compose.toLowerCase()+"attr;\n";
+                    bodConstructor  += "this."+compose.toLowerCase()+"attr = new "+compose+"();\n";
+                }
+            }
+            myClasse += "public "+this.name+"("+argConstructor +"){"+bodConstructor+"}\n";
             for(Functions func : functs){
                 myClasse += func.toString() +"\n";
             }
@@ -65,6 +99,39 @@ public class Classes {
             throw new RuntimeException(e);
         }
         return myClasse;
+    }
+    public String[] getImplementations(){
+        ObjectMapper mapper = new ObjectMapper();
+        String[] implementations;
+        try{
+            implementations = mapper.readValue(this.implement, String[].class);
+            return implementations;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return new String[0];
+    }
+    public String[] getAgregations(){
+        ObjectMapper mapper = new ObjectMapper();
+        String[] agregations;
+        try{
+            agregations = mapper.readValue(this.agregate, String[].class);
+            return agregations;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return new String[0];
+    }
+    public String[] getCompositions(){
+        ObjectMapper mapper = new ObjectMapper();
+        String[] compositions;
+        try{
+            compositions = mapper.readValue(this.composed, String[].class);
+            return compositions;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return new String[0];
     }
     public Attributes[] getClassAttributes(){
         ObjectMapper mapper = new ObjectMapper();
@@ -83,6 +150,22 @@ public class Classes {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getAgregate() {
+        return agregate;
+    }
+
+    public void setAgregate(String agregate) {
+        this.agregate = agregate;
+    }
+
+    public String getComposed() {
+        return composed;
+    }
+
+    public void setComposed(String composed) {
+        this.composed = composed;
     }
 
     public String getPackage_name() {
